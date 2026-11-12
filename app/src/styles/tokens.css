@@ -1,0 +1,231 @@
+/* Tend tokens. Light (morning kitchen) is the default; [data-theme="dark"] is the lamp-lit bedtime round. */
+:root {
+  color-scheme: light;
+
+  /* Spacing: 4 px base, 8 px rhythm */
+  --space-0-5: 0.125rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Layout */
+  --container: 82rem;
+  --gutter: clamp(1rem, 3.4vw, 3rem);
+  --app-gap: 1.25rem;
+
+  /* Radius ladder (nested: panel 28 > card 20 > tray 14 > control 10) */
+  --radius-chip: 6px;
+  --radius-control: 10px;
+  --radius-tray: 14px;
+  --radius-card: 20px;
+  --radius-panel: 28px;
+  --radius-pill: 999px;
+
+  /* Type */
+  --font-text: "Hanken Grotesk", ui-sans-serif, "Segoe UI", sans-serif;
+  --font-display: var(--font-text); /* one family: headings and figures differ by size and weight only */
+  --text-12: 0.75rem;
+  --text-13: 0.8125rem;
+  --text-14: 0.875rem;
+  --text-15: 0.9375rem;
+  --text-16: 1rem;
+  --text-20: 1.25rem;
+  --text-24: 1.5rem;
+  --text-32: 2rem;
+  --step-body: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  --step-lead: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --step-head: clamp(2rem, 1.3rem + 2.6vw, 3.25rem);
+  --step-display: clamp(2.6rem, 1.4rem + 4.6vw, 5rem);
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700; /* seal names and large marketing lines only */
+  --leading-display: 1.05;
+  --leading-heading: 1.2;
+  --leading-ui: 1.35;
+  --leading-body: 1.55;
+  --tracking-head: -0.02em;
+  --tracking-display: -0.03em;
+
+  /* Neutrals: porcelain, faintly warm */
+  --n-h: 75; /* neutral hue */
+  --n-c: 0.006; /* neutral chroma */
+  --bg: oklch(0.972 var(--n-c) var(--n-h)); /* page ground */
+  --surface: oklch(0.996 0.002 var(--n-h)); /* cards, the organiser case, sheets */
+  --surface-2: oklch(0.955 var(--n-c) var(--n-h)); /* wells, hover rows, selected week day */
+  --surface-3: oklch(0.92 0.008 var(--n-h)); /* avatars, meter tracks */
+  --line: oklch(0.9 0.008 var(--n-h)); /* decorative hairlines */
+  --line-soft: oklch(0.935 0.006 var(--n-h)); /* dividers inside the organiser */
+  --border-control: oklch(0.62 0.01 var(--n-h)); /* input, select and outline-button edges (>= 3:1 on surface) */
+  --text: oklch(0.23 0.012 55); /* primary text on bg, surface, surface-2 */
+  --text-2: oklch(0.42 0.012 55); /* secondary text on bg, surface, surface-2 */
+  --text-3: oklch(0.5 0.012 55); /* meta text on bg and surface (>= 4.5:1) */
+
+  /* The one primary: warm ink */
+  --ink: oklch(0.24 0.014 55); /* the one primary fill (Mark given) and toasts */
+  --ink-hover: oklch(0.33 0.014 55); /* primary hover, one step of its own colour */
+  --on-ink: oklch(0.975 0.006 75); /* text on --ink */
+  --focus: oklch(0.42 0.1 255); /* focus ring (>= 3:1 on every ground) */
+  --case: oklch(0.935 0.01 75); /* the organiser body around the trays */
+  --case-edge: oklch(0.88 0.012 75); /* the case's back edge, where the lids hinge */
+  --paper: oklch(0.985 0.012 88); /* the latest handover note */
+  --ink-priya: oklch(0.43 0.15 25); /* Priya's seal and initials: oxblood (>= 4.5:1 on lids and surface) */
+  --ink-sam: oklch(0.41 0.12 258); /* Sam's: iron-gall blue */
+  --ink-agnes: oklch(0.4 0.09 160); /* Agnes's: bottle green */
+  --ink-eleanor: oklch(0.42 0.08 60); /* Mum's own: sepia */
+  --seal-ink: oklch(0.25 0.02 55 / 0.86); /* the initials seal on every lid colour */
+
+  /* Dose times. tint = tray ground, lid = closed lid, on-lid = text on the lid,
+     ink = text on tint and surface (>= 4.5:1), mark = small marks on surface (>= 3:1) */
+  --morning-tint: oklch(0.955 0.04 78); /* morning tray ground and chip fill */
+  --morning-lid: oklch(0.875 0.068 76); /* morning compartment lid fill */
+  --morning-on-lid: oklch(0.28 0.035 60); /* text and seal on the morning lid (>= 4.5:1 on --morning-lid) */
+  --morning-ink: oklch(0.45 0.1 55); /* morning text on its tint and on surface (>= 4.5:1) */
+  --morning-mark: oklch(0.64 0.14 62); /* morning marks: week cells, chart line (>= 3:1 on surface) */
+
+  --midday-tint: oklch(0.955 0.04 122); /* midday tray ground and chip fill */
+  --midday-lid: oklch(0.86 0.085 128); /* midday compartment lid fill */
+  --midday-on-lid: oklch(0.28 0.03 130); /* text and seal on the midday lid (>= 4.5:1 on --midday-lid) */
+  --midday-ink: oklch(0.43 0.08 138); /* midday text on its tint and on surface (>= 4.5:1) */
+  --midday-mark: oklch(0.6 0.12 132); /* midday marks: week cells, chart line (>= 3:1 on surface) */
+
+  --evening-tint: oklch(0.95 0.032 18); /* evening tray ground and chip fill */
+  --evening-lid: oklch(0.855 0.07 15); /* evening compartment lid fill */
+  --evening-on-lid: oklch(0.28 0.035 15); /* text and seal on the evening lid (>= 4.5:1 on --evening-lid) */
+  --evening-ink: oklch(0.47 0.13 18); /* evening text on its tint and on surface (>= 4.5:1) */
+  --evening-mark: oklch(0.6 0.15 20); /* evening marks: week cells, chart line (>= 3:1 on surface) */
+
+  --bedtime-tint: oklch(0.948 0.02 262); /* bedtime tray ground and chip fill */
+  --bedtime-lid: oklch(0.85 0.06 255); /* bedtime compartment lid fill */
+  --bedtime-on-lid: oklch(0.27 0.04 258); /* text and seal on the bedtime lid (>= 4.5:1 on --bedtime-lid) */
+  --bedtime-ink: oklch(0.42 0.09 262); /* bedtime text on its tint and on surface (>= 4.5:1) */
+  --bedtime-mark: oklch(0.5 0.12 262); /* bedtime marks: week cells, chart line (>= 3:1 on surface) */
+
+  /* Tablets, drawn as they look in the hand */
+  --pill-white: oklch(0.995 0.002 90); /* tablet drawing only (decorative; names are always in text) */
+  --pill-cream: oklch(0.95 0.035 92); /* tablet drawing only (decorative; names are always in text) */
+  --pill-yellow: oklch(0.91 0.12 98); /* tablet drawing only (decorative; names are always in text) */
+  --pill-peach: oklch(0.87 0.075 55); /* tablet drawing only (decorative; names are always in text) */
+  --pill-pink: oklch(0.87 0.06 8); /* tablet drawing only (decorative; names are always in text) */
+  --pill-blue: oklch(0.82 0.07 240); /* tablet drawing only (decorative; names are always in text) */
+  --pill-edge: oklch(0.55 0.02 60 / 0.55); /* tablet drawing only (decorative; names are always in text) */
+  --pill-shine: oklch(1 0 0 / 0.7); /* tablet drawing only (decorative; names are always in text) */
+
+  /* Status */
+  --given-text: oklch(0.44 0.1 152); /* "Given" status text on surface (>= 4.5:1) */
+  --given-tint: oklch(0.95 0.035 152); /* given status background */
+  --late-text: oklch(0.5 0.13 50); /* late and watch status text on surface (>= 4.5:1) */
+  --late-tint: oklch(0.955 0.045 70); /* late status background */
+  --alert-text: oklch(0.49 0.16 28); /* missed, alert and over-limit text on surface and alert tint (>= 4.5:1) */
+  --alert-tint: oklch(0.955 0.03 25); /* alert message background */
+
+  /* Shadows: neutral only */
+  --shadow-rest: 0 1px 2px oklch(0.3 0.02 60 / 0.05), 0 4px 14px oklch(0.3 0.02 60 / 0.045); /* cards at rest */
+  --shadow-lift: 0 2px 4px oklch(0.3 0.02 60 / 0.06), 0 12px 28px oklch(0.3 0.02 60 / 0.09); /* the organiser case */
+  --shadow-overlay: 0 24px 64px oklch(0.25 0.02 60 / 0.18), 0 2px 8px oklch(0.25 0.02 60 / 0.08); /* sheets and toasts */
+  --shadow-lid: 0 1px 0 oklch(1 0 0 / 0.45) inset, 0 6px 14px oklch(0.3 0.03 60 / 0.12); /* closed lids */
+  --scrim: oklch(0.2 0.015 60 / 0.32); /* behind sheets */
+  --glow: oklch(0.85 0.08 70 / 0.1); /* the one soft wash behind the organiser case */
+
+  --focus-width: 2px;
+  --focus-offset: 2px;
+
+  --z-raised: 10;
+  --z-sticky: 200;
+  --z-sheet: 400;
+  --z-toast: 500;
+
+  /* Motion */
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-lid: 520ms;
+  --dur-long: 420ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --n-h: 60; /* dark: neutral hue */
+  --n-c: 0.01; /* dark: neutral chroma */
+  --bg: oklch(0.17 var(--n-c) var(--n-h)); /* dark: page ground */
+  --surface: oklch(0.205 var(--n-c) var(--n-h)); /* dark: cards, the organiser case, sheets */
+  --surface-2: oklch(0.24 var(--n-c) var(--n-h)); /* dark: wells, hover rows, selected week day */
+  --surface-3: oklch(0.285 var(--n-c) var(--n-h)); /* dark: avatars, meter tracks */
+  --line: oklch(0.3 var(--n-c) var(--n-h)); /* dark: decorative hairlines */
+  --line-soft: oklch(0.26 var(--n-c) var(--n-h)); /* dark: dividers inside the organiser */
+  --border-control: oklch(0.56 0.012 var(--n-h)); /* dark: input, select and outline-button edges (>= 3:1 on surface) */
+  --text: oklch(0.95 0.006 80); /* dark: primary text on bg, surface, surface-2 */
+  --text-2: oklch(0.8 0.01 75); /* dark: secondary text on bg, surface, surface-2 */
+  --text-3: oklch(0.72 0.012 70); /* dark: meta text on bg and surface (>= 4.5:1) */
+
+  --ink: oklch(0.93 0.012 80); /* dark: the one primary fill (Mark given) and toasts */
+  --ink-hover: oklch(0.86 0.014 80); /* dark: primary hover, one step of its own colour */
+  --on-ink: oklch(0.2 0.012 60); /* dark: text on --ink */
+  --focus: oklch(0.78 0.1 250); /* dark: focus ring (>= 3:1 on every ground) */
+  --case: oklch(0.215 0.01 60); /* dark: the organiser body around the trays */
+  --case-edge: oklch(0.29 0.012 60); /* dark: the case's back edge */
+  --paper: oklch(0.245 0.014 70); /* dark: the latest handover note */
+  --ink-priya: oklch(0.86 0.08 25); /* dark: Priya's seal and initials */
+  --ink-sam: oklch(0.86 0.07 258); /* dark: Sam's */
+  --ink-agnes: oklch(0.86 0.07 160); /* dark: Agnes's */
+  --ink-eleanor: oklch(0.88 0.06 70); /* dark: Mum's own */
+  --seal-ink: oklch(0.98 0.005 80 / 0.92); /* dark: the initials seal on every lid colour */
+
+  --morning-tint: oklch(0.255 0.03 65); /* dark: morning tray ground and chip fill */
+  --morning-lid: oklch(0.43 0.06 68); /* dark: morning compartment lid fill */
+  --morning-on-lid: oklch(0.985 0.005 80); /* dark: text and seal on the morning lid (>= 4.5:1 on --morning-lid) */
+  --morning-ink: oklch(0.85 0.08 72); /* dark: morning text on its tint and on surface (>= 4.5:1) */
+  --morning-mark: oklch(0.74 0.12 68); /* dark: morning marks: week cells, chart line (>= 3:1 on surface) */
+
+  --midday-tint: oklch(0.25 0.03 125); /* dark: midday tray ground and chip fill */
+  --midday-lid: oklch(0.42 0.055 132); /* dark: midday compartment lid fill */
+  --midday-on-lid: oklch(0.985 0.005 80); /* dark: text and seal on the midday lid (>= 4.5:1 on --midday-lid) */
+  --midday-ink: oklch(0.85 0.08 125); /* dark: midday text on its tint and on surface (>= 4.5:1) */
+  --midday-mark: oklch(0.72 0.11 128); /* dark: midday marks: week cells, chart line (>= 3:1 on surface) */
+
+  --evening-tint: oklch(0.255 0.03 18); /* dark: evening tray ground and chip fill */
+  --evening-lid: oklch(0.42 0.06 14); /* dark: evening compartment lid fill */
+  --evening-on-lid: oklch(0.985 0.005 80); /* dark: text and seal on the evening lid (>= 4.5:1 on --evening-lid) */
+  --evening-ink: oklch(0.84 0.07 18); /* dark: evening text on its tint and on surface (>= 4.5:1) */
+  --evening-mark: oklch(0.72 0.12 20); /* dark: evening marks: week cells, chart line (>= 3:1 on surface) */
+
+  --bedtime-tint: oklch(0.25 0.03 262); /* dark: bedtime tray ground and chip fill */
+  --bedtime-lid: oklch(0.42 0.07 258); /* dark: bedtime compartment lid fill */
+  --bedtime-on-lid: oklch(0.985 0.005 80); /* dark: text and seal on the bedtime lid (>= 4.5:1 on --bedtime-lid) */
+  --bedtime-ink: oklch(0.84 0.06 262); /* dark: bedtime text on its tint and on surface (>= 4.5:1) */
+  --bedtime-mark: oklch(0.72 0.1 262); /* dark: bedtime marks: week cells, chart line (>= 3:1 on surface) */
+
+  --pill-white: oklch(0.93 0.004 90); /* dark: tablet drawing only (decorative; names are always in text) */
+  --pill-cream: oklch(0.88 0.035 92); /* dark: tablet drawing only (decorative; names are always in text) */
+  --pill-yellow: oklch(0.85 0.11 98); /* dark: tablet drawing only (decorative; names are always in text) */
+  --pill-peach: oklch(0.8 0.075 55); /* dark: tablet drawing only (decorative; names are always in text) */
+  --pill-pink: oklch(0.8 0.06 8); /* dark: tablet drawing only (decorative; names are always in text) */
+  --pill-blue: oklch(0.75 0.07 240); /* dark: tablet drawing only (decorative; names are always in text) */
+  --pill-edge: oklch(0.1 0.01 60 / 0.6); /* dark: tablet drawing only (decorative; names are always in text) */
+  --pill-shine: oklch(1 0 0 / 0.45); /* dark: tablet drawing only (decorative; names are always in text) */
+
+  --given-text: oklch(0.8 0.12 152); /* dark: "Given" status text on surface (>= 4.5:1) */
+  --given-tint: oklch(0.27 0.04 152); /* dark: given status background */
+  --late-text: oklch(0.83 0.12 70); /* dark: late and watch status text on surface (>= 4.5:1) */
+  --late-tint: oklch(0.28 0.04 65); /* dark: late status background */
+  --alert-text: oklch(0.78 0.13 28); /* dark: missed, alert and over-limit text on surface and alert tint (>= 4.5:1) */
+  --alert-tint: oklch(0.28 0.05 25); /* dark: alert message background */
+
+  --shadow-rest: none; /* dark: cards at rest */
+  --shadow-lift: 0 0 0 1px var(--line), 0 12px 30px oklch(0 0 0 / 0.35); /* dark: the organiser case */
+  --shadow-overlay: 0 0 0 1px var(--line), 0 24px 64px oklch(0 0 0 / 0.5); /* dark: sheets and toasts */
+  --shadow-lid: 0 1px 0 oklch(1 0 0 / 0.08) inset, 0 6px 14px oklch(0 0 0 / 0.3); /* dark: closed lids */
+  --scrim: oklch(0.05 0.01 60 / 0.6); /* dark: behind sheets */
+  --glow: oklch(0.6 0.08 70 / 0.08); /* dark: the one soft wash behind the organiser case */
+}
